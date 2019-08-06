@@ -16,7 +16,8 @@ set version_branch  [join [lrange [split ${version} .] 0 1] .]
 categories          databases
 platforms           darwin
 license             GPL-2
-maintainers         nomaintainer
+maintainers         {ryandesign @ryandesign}
+
 homepage            https://www.mysql.com/
 
 if {"darwin" eq ${os.platform} && ${os.major} > 8} {
