@@ -2,9 +2,7 @@
 # vim: set fileencoding=utf-8 tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab filetype=tcl :
 
 PortSystem 1.0
-PortGroup            java 1.0
-
-#PortGroup           github 1.0
+PortGroup           java 1.0
 
 name                pdftk-java
 set git_project     pdftk
@@ -31,7 +29,7 @@ checksums           rmd160  02546b6b1553348f4b5b74fd421a8ed2a84bd282 \
 java.version        1.7+
 java.fallback       openjdk11
 
-depends_build-append bin:ant:apache-ant
+depends_build-append    bin:ant:apache-ant
 
 depends_lib-append  port:bcprov \
                     port:commons-lang3
@@ -42,8 +40,8 @@ use_configure       no
 
 pre-build {
     file mkdir ${worksrcpath}/lib
-    system "cd ${worksrcpath}/lib && ln -s ${prefix}/share/java/bcprov/bcprov.jar"
-    system "cd ${worksrcpath}/lib && ln -s ${prefix}/share/java/commons-lang3.jar"
+    system -W ${worksrcpath}/lib "ln -s ${prefix}/share/java/bcprov/bcprov.jar"
+    system -W ${worksrcpath}/lib "ln -s ${prefix}/share/java/commons-lang3.jar"
 }
 
 build.cmd           ant
