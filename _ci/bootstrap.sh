@@ -20,6 +20,8 @@ if [ ${OS_MAJOR} -ge 18 ]
         sudo ntpdate -vu 0.us.pool.ntp.org || true
 fi
 
+pwd
+
 # Download resources in background ASAP but use later
 curl -fsSLO "https://dl.bintray.com/macports-ci-bot/macports-base/2.6r0/MacPorts-${OS_MAJOR}.tar.bz2" &
 curl_mpbase_pid=$!
