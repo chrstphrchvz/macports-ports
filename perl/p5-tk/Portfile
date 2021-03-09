@@ -4,8 +4,8 @@ PortSystem          1.0
 PortGroup           perl5 1.0
 
 perl5.branches      5.26 5.28 5.30
-perl5.setup         Tk 804.035
-revision            1
+perl5.setup         Tk 804.036
+revision            0
 license             {Artistic-1 GPL} MIT
 maintainers         {@chrstphrchvz gmx.us:chrischavez} openmaintainer
 description         p5-tk is a Perl interface to Tk
@@ -13,9 +13,9 @@ long_description    ${description}
 
 platforms           darwin
 
-checksums           rmd160  cfc0989ba68ae717d8e7afb71ff6a22e18322eb5 \
-                    sha256  4d2b80291ba6de34d8ec886a085a6dbd2b790b926035a087e99025614c5ffdd4 \
-                    size    7024487
+checksums           rmd160  299f83eb4b85aab1a512f3ee0e896478f0758016 \
+                    sha256  32aa7271a6bdfedc3330119b3825daddd0aa4b5c936f84ad74eabb932a200a5e \
+                    size    7024993
 
 if {${perl5.major} != ""} {
     depends_build-append \
