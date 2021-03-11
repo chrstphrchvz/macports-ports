@@ -35,6 +35,7 @@ if {${perl5.major} != ""} {
 # (can't just use X11=${prefix})
 # See https://rt.cpan.org/Ticket/Display.html?id=129923
     configure.args-append \
+                    VERBOSE=1 \
                     XFT=1 \
                     X11INC=${prefix}/include \
                     X11LIB=${prefix}/lib
