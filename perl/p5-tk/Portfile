@@ -18,6 +18,10 @@ checksums           rmd160  299f83eb4b85aab1a512f3ee0e896478f0758016 \
                     size    7024993
 
 if {${perl5.major} != ""} {
+    # Some experimental improvements to VERBOSE behavior
+    patchfiles-append \
+                    patch-Tk-MMTry.pm.diff
+
     depends_build-append \
                     port:pkgconfig
 
