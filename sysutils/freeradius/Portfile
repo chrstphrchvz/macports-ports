@@ -1,22 +1,25 @@
 # -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
 
 PortSystem              1.0
-PortGroup               muniversal 1.0
+PortGroup               github      1.0
+PortGroup               muniversal  1.0
+PortGroup               openssl     1.0
 
+github.setup            FreeRADIUS freeradius-server 3.0.25
+git.branch              release_[string map {. _} ${github.version}]
+github.tarball_from     releases
 name                    freeradius
-version                 3.0.21
-revision                5
-checksums               rmd160  04a038b701f19d9c598e826a795a0cdaacd3768b \
-                        sha256  c22dad43954b0cbc957564d3f8cbb942ff09853852d2c2155d54e6bd641a4e7d \
-                        size    3184588
+revision                0
+checksums               rmd160  d377302aaac14eda511d5cd706080382820bdbc2 \
+                        sha256  4883a68bb3cee46025359a97c1691ce655e8babfd6dc3c021d00e109a2ff4c10 \
+                        size    5299624
 
 categories              sysutils
 maintainers             nomaintainer
 homepage                https://freeradius.org
 platforms               darwin freebsd
 license                 LGPL-2.1+
-use_bzip2               yes
-distname                ${name}-server-${version}
+distname                ${name}-server-${github.version}
 
 description             Free Radius Implementation
 
@@ -27,20 +30,20 @@ long_description        The FreeRADIUS Server Project is an attempt to create \
                         RADIUS server, but they don't share a lot in common \
                         anymore.
 
-master_sites            ftp://ftp.freeradius.org/pub/freeradius/ \
-                        ftp://ftp.freeradius.org/pub/freeradius/old
+openssl.branch          1.1
 
-depends_lib             port:libtool \
+depends_lib-append      port:libtool \
                         port:libpcap \
                         path:lib/libldap.dylib:openldap \
-                        path:lib/libssl.dylib:openssl \
                         port:talloc \
-                        port:gdbm
+                        port:gdbm   \
+                        port:pcre   \
+                        port:perl5
 
 use_autoconf            yes
 
-configure.args          --with-openssl-includes=${prefix}/include/openssl \
-                        --with-openssl-libraries=${prefix}/lib \
+configure.args          --with-openssl-includes=[openssl::include_dir] \
+                        --with-openssl-libraries=[openssl::lib_dir] \
                         --with-system-libltdl \
                         --with-system-libtool \
                         --without-rlm_krb5
@@ -106,5 +109,5 @@ variant percona conflicts mysql5 mysql51 mysql55 mysql56 mariadb description {Bu
 }
 
 livecheck.type          regex
-livecheck.url           [lindex ${master_sites} 0]
+livecheck.url           ftp://ftp.freeradius.org/pub/freeradius/
 livecheck.regex         ${name}-server-(\[0-9.\]+)\\.tar
