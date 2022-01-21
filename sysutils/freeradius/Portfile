@@ -33,19 +33,23 @@ long_description        The FreeRADIUS Server Project is an attempt to create \
 
 openssl.branch          1.1
 
+perl5.branches          5.34
+
 depends_lib-append      port:libtool \
                         port:libpcap \
                         path:lib/libldap.dylib:openldap \
                         port:talloc \
                         port:gdbm   \
                         port:pcre   \
-                        port:perl${perl5.default_branch}
+                        port:perl${perl5.major}
 
 configure.args          --with-openssl-includes=[openssl::include_dir] \
                         --with-openssl-libraries=[openssl::lib_dir] \
                         --with-system-libltdl \
                         --with-system-libtool \
-                        --without-rlm_krb5
+                        --without-rlm_krb5 \
+                        --with-perl=${perl5.bin} \
+                        PERL=${perl5.bin}
 
 use_autoconf            yes
 use_bzip2               yes
