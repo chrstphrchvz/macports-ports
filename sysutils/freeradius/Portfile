@@ -6,14 +6,14 @@ PortGroup               muniversal  1.0
 PortGroup               openssl     1.0
 PortGroup               perl5       1.0
 
-github.setup            FreeRADIUS freeradius-server 3_0_25 release_
+github.setup            FreeRADIUS freeradius-server 3_2_0 release_
 version                 [string map {_ .} ${github.version}]
 github.tarball_from     releases
 name                    freeradius
 revision                0
-checksums               rmd160  52ef71e091e5149a3311846b0ec7861ffefcc6d4 \
-                        sha256  fc158cdab4a705b179b1a91cd72473006ef4dfb570b0d097db6c9c34049a4509 \
-                        size    3402380
+checksums               rmd160  f6ca9d9ef58a83e5486b6d93303804a084559199 \
+                        sha256  a3071cd78ffcb4706217561d822ee4c760daeb277a63f36a9f11d412c3c39e56 \
+                        size    3399380
 
 categories              sysutils
 maintainers             nomaintainer
@@ -31,7 +31,7 @@ long_description        The FreeRADIUS Server Project is an attempt to create \
                         RADIUS server, but they don't share a lot in common \
                         anymore.
 
-openssl.branch          1.1
+openssl.branch          3
 
 perl5.branches          5.34
 
