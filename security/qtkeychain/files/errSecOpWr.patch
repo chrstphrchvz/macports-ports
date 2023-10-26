@@ -1,0 +1,13 @@
+--- keychain_apple.mm
++++ keychain_apple.mm
+@@ -42,9 +42,9 @@
+         case errSecUnimplemented:
+             return ErrorDescription(QKeychain::NotImplemented, Job::tr("Function or operation not implemented"));
+         case errSecIO:
+             return ErrorDescription(QKeychain::OtherError, Job::tr("I/O error"));
+-        case errSecOpWr:
++        case -49: /* errSecOpWr */
+             return ErrorDescription(QKeychain::OtherError, Job::tr("Already open with with write permission"));
+         case errSecParam:
+             return ErrorDescription(QKeychain::OtherError, Job::tr("Invalid parameters passed to a function"));
+         case errSecAllocate:
