@@ -94,7 +94,7 @@ configure.env-append    ENABLESSL=y \
                         INSTALLWWWDIR=${xywwwdir} \
                         XYMONVAR=${xyvardir}
 
-destroot.env-append     INSTALLROOT=${destroot}
+destroot.env-append     INSTALLROOT=${destroot} PKGBUILD=1
 destroot.keepdirs       ${destroot}${xytopdir} \
                         ${destroot}${xylogdir} \
                         ${destroot}${xytmpdir} \
